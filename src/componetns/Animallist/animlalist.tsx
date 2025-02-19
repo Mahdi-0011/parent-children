@@ -1,32 +1,41 @@
 import { useState } from "react";
+import './animallist.scss'
 
 //["Lion", "Horse", "Dolfin"]//
 //<string[]>//
 
+
 const AnimalList = () => {
 
   const[inputvalue, setinputvalue] = useState("");
+  const[animallist, setanimallist] = useState<string[]>([]);
 
   const HandelInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setinputvalue(e.target.value);
   }
   const AddAnimal = () => {
-    alert("added");
-  }
-  const DeletAnimal = () => {
+    setanimallist([...animallist, inputvalue]);
+   }
+  /*const DeletAnimal = () => {
     alert("deleted");
   }
   const EditAnimal = () => {
     alert("edited");
   }
-
+    <button onClick={DeletAnimal}>Delete</button>
+    <button onClick={EditAnimal}>Edit</button>*/
+  
   return <>
   <div>
   <input type="text" onChange={HandelInputChange} value={inputvalue}/>
   <button onClick={AddAnimal} >Add</button>
   <p>you wrote: {inputvalue}</p>
-  <button onClick={DeletAnimal}>Delete</button>
-  <button onClick={EditAnimal}>Edit</button>
+  </div>
+  <div className="animalList">
+    <h5 className="h5">My animal list!</h5>
+    <ul>
+{animallist.map((a) => (<li key={a}>{a}</li>))}
+    </ul>
   </div>
   </>
 };

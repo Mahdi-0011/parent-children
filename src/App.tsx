@@ -1,6 +1,6 @@
 
 import './App.scss'
-import AnimalList from './componetns/Animalcard/animlalist';
+import AnimalList from './componetns/Animallist/animlalist';
 
 
 function App() {

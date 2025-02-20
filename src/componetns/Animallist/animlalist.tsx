@@ -34,7 +34,7 @@ const AnimalList = () => {
   <div className="animalList">
     <h5 className="h5">My animal list!</h5>
     <ul>
-{animallist.map((a) => (<li key={a}>{a}</li>))}
+        {animallist.map((a) => (<li key={a}>{a}</li>))}
     </ul>
   </div>
   </>

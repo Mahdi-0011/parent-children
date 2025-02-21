@@ -1,18 +1,19 @@
 import { useState } from "react";
-import './animallist.scss'
+import "./animallist.scss";
+import Button from "../Button";
 
 //["Lion", "Horse", "Dolfin"]//
 //<string[]>//
 
 
-/*const AnimalList = () => {
+const AnimalList = () => {
 
   const[inputvalue, setinputvalue] = useState("");
   const[animallist, setanimallist] = useState<string[]>([]);
 
   const HandelInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setinputvalue(e.target.value);
-  }
+  };
   const AddAnimal = () => {
     setanimallist([...animallist, inputvalue]);
    }
@@ -22,7 +23,8 @@ import './animallist.scss'
   const EditAnimal = () => {
     alert("edited");
   }
-
+    <button onClick={DeletAnimal}>Delete</button>
+    <button onClick={EditAnimal}>Edit</button>*/
   
   return <>
   <div>
@@ -39,17 +41,4 @@ import './animallist.scss'
   </>
 };
 
-export default AnimalList;*/
-
-
-const animalList = () => {
-  const [animalArray, setAnimlaArray] = useState<string[]>(["gorilla", "lion", "hamster"])
-
-  return<>
-  <h1>Animal List</h1>
-  <input type="text" />
-  <button>Add animal</button>
-  </>
-}
-
-export default animalList;
+export default AnimalList;

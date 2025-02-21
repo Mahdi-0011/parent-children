@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./animallist.scss";
-import Button from "../Button";
+import './animallist.scss'
 
 //["Lion", "Horse", "Dolfin"]//
 //<string[]>//
@@ -13,7 +12,7 @@ const AnimalList = () => {
 
   const HandelInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setinputvalue(e.target.value);
-  };
+  }
   const AddAnimal = () => {
     setanimallist([...animallist, inputvalue]);
    }

@@ -1,43 +1,47 @@
 import { useState } from "react";
-import './animallist.scss'
-
-//["Lion", "Horse", "Dolfin"]//
-//<string[]>//
-
+import "./animallist.scss";
 
 const AnimalList = () => {
+  const [inputvalue, setinputvalue] = useState("");
+  const [animallist, setanimallist] = useState<string[]>([]);
+  const [randomAnimal, setRandomAnimal] = useState<string | null>(null);
 
-  const[inputvalue, setinputvalue] = useState("");
-  const[animallist, setanimallist] = useState<string[]>([]);
-
-  const HandelInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputvalue(e.target.value);
-  }
-  const AddAnimal = () => {
-    setanimallist([...animallist, inputvalue]);
-   }
-  /*const DeletAnimal = () => {
-    alert("deleted");
-  }
-  const EditAnimal = () => {
-    alert("edited");
-  }
-    <button onClick={DeletAnimal}>Delete</button>
-    <button onClick={EditAnimal}>Edit</button>*/
-  
-  return <>
-  <div>
-  <input type="text" onChange={HandelInputChange} value={inputvalue}/>
-  <button onClick={AddAnimal} >Add</button>
-  <p>you wrote: {inputvalue}</p>
-  </div>
-  <div className="animalList">
-    <h5 className="h5">My animal list!</h5>
-    <ul>
-        {animallist.map((a) => (<li key={a}>{a}</li>))}
-    </ul>
-  </div>
-  </>
+  };
+
+  const addAnimal = () => {
+    if (inputvalue.trim() !== "") {
+      setanimallist([...animallist, inputvalue]);
+      setinputvalue(""); // Töm inputfältet efter att ha lagt till
+    }
+  };
+
+  const pickRandomAnimal = () => {
+    if (animallist.length > 0) {
+      const randomIndex = Math.floor(Math.random() * animallist.length);
+      setRandomAnimal(animallist[randomIndex]);
+    }
+  };
+
+  return (
+    <>
+      <div>
+        <input type="text" onChange={handleInputChange} value={inputvalue} />
+        <button onClick={addAnimal}>Add</button>
+      </div>
+      <div className="animalList">
+        <h5 className="h5">My animal list!</h5>
+        <ul>
+          {animallist.map((a, index) => (
+            <li key={index}>{a}</li>
+          ))}
+        </ul>
+      </div>
+      <button onClick={pickRandomAnimal}>🎲 Pick random</button>
+      {randomAnimal && <p>Random animal: {randomAnimal} 🎉</p>}
+    </>
+  );
 };
 
 export default AnimalList;

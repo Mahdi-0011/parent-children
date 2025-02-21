@@ -5,7 +5,7 @@ import './animallist.scss'
 //<string[]>//
 
 
-const AnimalList = () => {
+/*const AnimalList = () => {
 
   const[inputvalue, setinputvalue] = useState("");
   const[animallist, setanimallist] = useState<string[]>([]);
@@ -22,8 +22,7 @@ const AnimalList = () => {
   const EditAnimal = () => {
     alert("edited");
   }
-    <button onClick={DeletAnimal}>Delete</button>
-    <button onClick={EditAnimal}>Edit</button>*/
+
   
   return <>
   <div>
@@ -40,4 +39,17 @@ const AnimalList = () => {
   </>
 };
 
-export default AnimalList;
+export default AnimalList;*/
+
+
+const animalList = () => {
+  const [animalArray, setAnimlaArray] = useState<string[]>(["gorilla", "lion", "hamster"])
+
+  return<>
+  <h1>Animal List</h1>
+  <input type="text" />
+  <button>Add animal</button>
+  </>
+}
+
+export default animalList;

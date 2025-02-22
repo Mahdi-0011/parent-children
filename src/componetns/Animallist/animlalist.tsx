@@ -1,13 +1,15 @@
 import { useState } from "react";
 import './animallist.scss'
+import Button from "../Button";
 
-//["Lion", "Horse", "Dolfin"]//
-//<string[]>//
 
 function AnimalList() {
   const [inputvalue, setinputvalue] = useState("");
   const [animallist, setanimallist] = useState<string[]>([]);
   const [selectedAnimal, setanimal] = useState<string | null>(null);
+  const [randomAnimal, setRandomAnimal] = useState<string | null>(null);
+
+
   const HandelInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputvalue(e.target.value);
   }
@@ -38,6 +40,15 @@ function AnimalList() {
       alert("Select animal to change name and type in new name");
     }
   };
+
+  const pickRandomAnimal = () => {
+    if (animallist.length > 0) {
+      const randomIndex = Math.floor(Math.random() * animallist.length);
+      setRandomAnimal(animallist[randomIndex]);
+    }
+  };
+
+
   return (
     <>
       <div>
@@ -46,6 +57,9 @@ function AnimalList() {
         <Button title="Add" handleClick={AddAnimal}></Button>
         <Button handleClick={deleteAnimal} title="Delete Animal"></Button>
         <Button handleClick={editAnimal} title="Edit Animal"></Button>
+        <button onClick={pickRandomAnimal}>🎲 Pick random</button>
+         {randomAnimal && <p>Random animal: {randomAnimal} 🎉</p>}
+
         <p>you wrote: {inputvalue}</p>
       </div>
       <div className="animalList">
